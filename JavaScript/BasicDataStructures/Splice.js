@@ -1,5 +1,3 @@
-const arr = [2, 4, 5, 1, 7, 5, 2, 1];
-// Only change code below this line
-arr.splice()
-// Only change code above this line
+const arr = ["I", "definitely", "do", "not", "love", "dogs", "and", "capybaras"];
+arr.splice(1,3,"really")
 console.log(arr);
