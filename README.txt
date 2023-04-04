@@ -1,0 +1,1 @@
+This is what I made while learning JavaScript through FreeCodeCamp tutorials
