@@ -5,5 +5,6 @@ function Dog(name, color) {
     }
 
     let hound = new Dog("Lilo", "White with black dots");
-    console.log(hound)
+    console.log(hound instanceof Dog);
+    
     
