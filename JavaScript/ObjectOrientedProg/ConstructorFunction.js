@@ -6,5 +6,13 @@ function Dog(name, color) {
 
     let hound = new Dog("Lilo", "White with black dots");
     console.log(hound instanceof Dog);
+
+    let ownProps = [];
+
+    for (property in hound){
+        if (hound.hasOwnProperty(property)){
+            ownProps.push(property)
+        }
+    }
     
-    
+console.log(ownProps);
