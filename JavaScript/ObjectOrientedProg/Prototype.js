@@ -9,4 +9,15 @@ function Dog(name) {
   // Only change code above this line
   let beagle = new Dog("Snoopy");
   
-  console.log(beagle)
+  let ownProps = [];
+  let protProps = [];
+  for (let property in beagle){
+    if (beagle.hasOwnProperty(property)){
+      ownProps.push(property);
+    }
+    else {
+      protProps.push(property);
+    }
+  }
+
+console.log(ownProps, protProps)
