@@ -20,4 +20,4 @@ function Dog(name) {
     }
   }
 
-console.log(ownProps, protProps)
+console.log(ownProps, protProps, Dog.prototype.isPrototypeOf(beagle))
