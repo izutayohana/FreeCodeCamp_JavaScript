@@ -7,7 +7,7 @@ function Dog(name) {
   //But whenever a prototype is manually set to a new object, remember to define the constructor property, otherwise the constructor property will be overwritten.
 
   Dog.prototype = {
-    constructor: Dog,
+constructor: Dog,
   numLegs: 4,
   eat: function(){
     console.log("Au au au");
