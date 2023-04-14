@@ -21,6 +21,7 @@ function Cat(name) {
   Cat.prototype = Object.create(Animal.prototype); //this makes the Cat inherit all the prototype properties from Animal
   Cat.prototype.constructor = Cat; //this resets the constructor from Animal to Cat
   Cat.prototype.voice = function(){console.log("Nya!")} //this gives the cat its own method, in addition to the inherited methods
+  Cat.prototype.eat = function(){console.log("Nhac nhac")} //this is a override of an inherited method
 
   Bear.prototype = Object.create(Animal.prototype);
   Bear.prototype.constructor = Bear;
