@@ -21,8 +21,17 @@ function Cat(name) {
     eat: function() {
       console.log("nom nom nom")
   }}
+ //When an object inherits its prototype from another object, it also inherits the supertype's constructor property
+ //To fix this, you can manually set the constructor property of the object, like I've done below:
 
   Cat.prototype = Object.create(Animal.prototype);
-  let beagle = Object.create(Animal.prototype);
+  Cat.prototype.constructor = Cat;
+
+  Bear.prototype = Object.create(Animal.prototype);
+  Bear.prototype.constructor = Bear;
+
+  let garfield = new Cat("Garfield");
+  console.log(garfield.constructor)
+
 
   
