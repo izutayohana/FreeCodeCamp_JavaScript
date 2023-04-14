@@ -4,15 +4,9 @@ function Cat(name) {
     this.name = name;
   }
   
-  Cat.prototype = {
-    constructor: Cat};
-  
   function Bear(name) {
     this.name = name;
   }
-  
-  Bear.prototype = {
-    constructor: Bear};
   
   function Animal() { }
   
@@ -24,14 +18,21 @@ function Cat(name) {
  //When an object inherits its prototype from another object, it also inherits the supertype's constructor property
  //To fix this, you can manually set the constructor property of the object, like I've done below:
 
-  Cat.prototype = Object.create(Animal.prototype);
-  Cat.prototype.constructor = Cat;
+  Cat.prototype = Object.create(Animal.prototype); //this makes the Cat inherit all the prototype properties from Animal
+  Cat.prototype.constructor = Cat; //this resets the constructor from Animal to Cat
+  Cat.prototype.voice = function(){console.log("Nya!")} //this gives the cat its own method, in addition to the inherited methods
 
   Bear.prototype = Object.create(Animal.prototype);
   Bear.prototype.constructor = Bear;
+  Bear.prototype.voice = function(){console.log("Grrrrr!")}
 
   let garfield = new Cat("Garfield");
-  console.log(garfield.constructor)
+  let pooh = new Bear("Pooh")
 
+pooh.eat();
+pooh.voice();
+console.log(pooh.name);
 
-  
+garfield.eat();
+garfield.voice();
+console.log(garfield.name);
