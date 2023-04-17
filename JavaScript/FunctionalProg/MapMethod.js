@@ -114,10 +114,9 @@ const watchList = [
   
   // Only change code below this lineTitle
   
-  
-  var ratings = [];
-  ratings = watchList.map((movie) => {console.log(('{"title":  "' + movie["Title"] + '", "rating": "' + movie["imdbRating"] + '"}'))});
-  
-  // Only change code above this line
-  
-  console.log(JSON.stringify(ratings));
+
+const ratings = watchList.map(movie => {return(('{"title":  "' + movie["Title"] + '", "rating": "' + movie["imdbRating"] + '"}'))});
+
+// Only change code above this line
+
+console.log(JSON.stringify(ratings));
