@@ -114,8 +114,7 @@ const watchList = [
   
   // Only change code below this lineTitle
   
-
-const ratings = watchList.map(movie => {return(('{"title":  "' + movie["Title"] + '", "rating": "' + movie["imdbRating"] + '"}'))});
+const ratings = watchList.map(movie => ({title:  movie["Title"], rating: movie["imdbRating"]}));
 
 // Only change code above this line
 
