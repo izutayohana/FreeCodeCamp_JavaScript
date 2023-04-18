@@ -114,9 +114,8 @@ const watchList = [
   
   // Only change code below this lineTitle
 
-  const filteredList1 = watchList.map(movies => ({title: movies["Title"], rating: parseFloat(movies["imdbRating"])}));
-  const filteredList2 = filteredList1.filter(goodmovies => ({,ratings: goodmovies["imdbRating"]>8})) 
+  const filteredList = watchList.filter(goodmovies => (parseFloat(goodmovies["imdbRating"])>=8)).map(movies => ({title: movies["Title"], rating: movies["imdbRating"]})); 
+  
   // Only change code above this line
   
-  console.log(filteredList1);
-  console.log(filteredList2)
+  console.log(filteredList);
