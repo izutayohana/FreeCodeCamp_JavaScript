@@ -114,11 +114,11 @@ const watchList = [
   
   // Only change code below this lineTitle
 
-  let filteredmap = watchList.filter(director => director["Director"].length == 17).map(movies => ({director: movies["Director"], rating: movies["imdbRating"]}))
-  
-  //filter(movies => movies["Director"] == "Christopher Nolan")
+  let filtered = watchList.filter(director => director["Director"].length == 17).map(movies => parseFloat(movies["imdbRating"]))
+  let sum = filtered.reduce((acumulado,nota,indice,array)=> (acumulado+nota),0)
 
-  
+let averageRating = sum/filtered.length;
+
   // Only change code above this line
   
   console.log(filteredList);
