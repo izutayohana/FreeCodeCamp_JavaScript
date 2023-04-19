@@ -114,7 +114,7 @@ const watchList = [
   
   // Only change code below this lineTitle
 
-  let averageRating = watchList.map(movies => ({director: movies["Director"], rating: movies["imdbRating"]}))
+  let filteredmap = watchList.filter(director => director["Director"].length == 17).map(movies => ({director: movies["Director"], rating: movies["imdbRating"]}))
   
   //filter(movies => movies["Director"] == "Christopher Nolan")
 
