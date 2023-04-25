@@ -13,7 +13,7 @@ function myReplace(str, before, after) {
     } else {
       aftercap = after.toLowerCase();
     }
-    return aftercap
+    return str.replace(before, aftercap)
     }
     
-    console.log(myReplace("A quick brown fox jumped over the lazy dog", "jumped", "Leaped"));
+    console.log(myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped"));
