@@ -6,12 +6,14 @@
 
 
 function myReplace(str, before, after) {
-    let capital = /\w(?=[A-Z])/g
+    let capital = /(?=[A-Z])\w*/g
+    let aftercap = "";
     if (before.match(capital)){
-      let capindex = before.indexOf(before.match(capital))+1;
-      return capindex;
+    aftercap = after.charAt(0).toUpperCase() + after.slice(1)
+    } else {
+      aftercap = after.toLowerCase();
     }
-      return str;
+    return aftercap
     }
     
-    console.log(myReplace("A quick brown fox jumped over the lazy dog", "jumpeD", "leaped"));
+    console.log(myReplace("A quick brown fox jumped over the lazy dog", "jumped", "Leaped"));
