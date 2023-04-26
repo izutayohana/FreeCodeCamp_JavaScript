@@ -19,4 +19,4 @@ function convertHTML(str) {
     return newStr;
   }
   
-  console.log(convertHTML("Sixty > twelve"));
+  console.log(convertHTML('Stuff in "quotation marks"'));
