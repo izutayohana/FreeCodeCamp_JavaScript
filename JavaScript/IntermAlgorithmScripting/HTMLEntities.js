@@ -5,3 +5,18 @@
 // "" = &quot;
 // '' = &apos;
 
+function convertHTML(str) {
+    let entities = {
+      "&": "&amp;",
+      "'": "&apos;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;"
+    }
+    let newStr = "";
+  
+    newStr = str.replace(/[&'<>"]/g, m => entities[m])
+    return newStr;
+  }
+  
+  console.log(convertHTML("Sixty > twelve"));
