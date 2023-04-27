@@ -5,7 +5,14 @@ function smallestCommons(arr) {
     let newArr = [];
     for (let i = arr[0]; i <= arr[1]; i++){
       newArr.push(i)
-    } return newArr;
+    } 
+    let multiple = newArr[newArr.length-1]*newArr[newArr.length-2];
+    for (let j = 0; j < newArr.length; j++){
+      while (multiple%newArr[j] != 0){
+        multiple = multiple*newArr[j]
+      }
+    }
+    return multiple;
     }
     
-    console.log(smallestCommons([1,5]));
+    console.log(smallestCommons([2, 10]));
