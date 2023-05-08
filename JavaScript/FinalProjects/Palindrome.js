@@ -4,9 +4,14 @@
 function palindrome(str) {
     let alphan = /[a-z0-9]/gi
     let matched = str.match(alphan);
-    let reversed = matched.reverse().join('').toLowerCase();
     let usual = matched.join('').toLowerCase();
-    return reversed;
+    let reversed = matched.reverse().join('').toLowerCase();
+    if (reversed === usual){
+      return true
+    } else {
+      return false
+    }
+
   }
   
   console.log(palindrome("almostomla"));
