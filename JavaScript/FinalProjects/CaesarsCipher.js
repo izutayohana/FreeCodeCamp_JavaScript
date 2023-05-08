@@ -7,17 +7,22 @@
 //All letters will be uppercase. Do not transform any non-alphabetic character (i.e. spaces, punctuation), but do pass them on.
 
 function rot13(str) {
+    let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     let separated = str.split("")
     let arr2 = [];
     for (let i = 0; i < separated.length; i++){
       if (separated[i].match(/[A-Z]/gi)) {
-        let char = separated[i].charCodeAt();
-        arr2.push(char-13)
-      } else {
-        arr2.push(separated[i])
+        let index = (alphabet.indexOf(separated[i]) - 13);
+        if (index >= 0){
+          arr2.push(alphabet[index])
+        } else {
+          arr2.push(alphabet[26 + index])
+        }
+   } else {
+      arr2.push(separated[i])
       }
     }
-    return arr2;
-  }
+    return arr2.join("");
   
-  console.log(rot13("SERR PBQR PNZC"));
+  }
+  console.log(rot13("SERR YBIR?"));
