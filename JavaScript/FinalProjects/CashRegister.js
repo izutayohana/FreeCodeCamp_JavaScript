@@ -1,7 +1,6 @@
 function checkCashRegister(price, cash, cid) {
     let change = {"status": "OPEN", "change": []};
     let changevalue = cash - price;
-    console.log(changevalue)
     let reversed = cid.reverse();
     let result
     let amount = {
@@ -16,31 +15,32 @@ function checkCashRegister(price, cash, cid) {
       "PENNY": 0.01
     }
     for (const key in amount){
-       if (changevalue - amount[key] >= 0){
          for (let i = 0; i < reversed.length; i++){
-         if(key == reversed[i][0] && changevalue/amount[key] >= 1) {
+          if (changevalue - amount[key] > 0 && key == reversed[i][0] && changevalue/amount[key] >= 1){
+    
            let times1 = reversed[i][1]/amount[key]
            let times2 = Math.floor(changevalue/amount[key])
            result = times1 - times2
-           if (result >= 0) {
+           if (result > 0) {
              let value = [key, reversed[i][1] - result*amount[key]]
              change["change"].push(value)
-             
+             changevalue -= (reversed[i][1] - result*amount[key]) 
            } else {
-           while (result >= 0 && times2 > 0){
-             times2 -= 1;
-           } let value = [key, reversed[i][1] - result*amount[key]]
+             if(reversed[i][1] > 0){
+             let value = [key, reversed[i][1]]
              change["change"].push(value)
+          changevalue = changevalue - (times2 - times1) }
            }
-           changevalue -= result*amount[key] 
            } 
          } 
-       } if(change["change"] == []){
-         change["status"] = "INSUFFICIENT_FUNDS"
        }
-     }
+     
+      if(changevalue > 0){
+         change["status"] = "INSUFFICIENT_FUNDS"
+         change["change"] = []
+       }
   return change;
    
   } 
   
-  console.log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
+  console.log(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]))
