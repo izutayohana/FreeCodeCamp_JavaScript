@@ -4,15 +4,17 @@
 
 function telephoneCheck(str) {
     let separated = str.split("")
-    let variant =  /[0-9]/gi
+    let counter = str.match(/[()]/gi)
+    let variant = /[0-9]/gi
     let matches = str.match(variant).join("");
-    if (matches.length == 11 && str[0] != 1 || matches.length < 10 || matches.length > 11) {
+    if (matches.length == 11 && str[0] != 1 || matches.length < 10 || matches.length > 11 || separated.indexOf("-", 12) > 0) {
             return false
-    } else if (separated.indexOf(")") > 0 && separated.indexOf("(") > 0 && separated.indexOf(")") >= separated.indexOf("(") || separated.indexOf(")") < 0 && separated.indexOf("(") < 0) {
+    } else if (!counter || counter.length == 2 && separated.indexOf(")") - separated.indexOf("(") == 4) {
         return true
     } else {
      return false;
     }
   }
+  
   
   console.log(telephoneCheck("-1 (757) 622-7382"));
