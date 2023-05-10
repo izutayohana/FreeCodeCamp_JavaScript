@@ -24,11 +24,7 @@ function checkCashRegister(price, cash, cid) {
          let times2 = Math.floor(changevalue/amount[key])
          result = reversed[i][1] - times2
          if (result > 0) {
-           let value 
-          if (times2*amount[key] == 0.03){
-            value = [key, 0.04]
-          } else {
-           value = [key, (times2*amount[key])]}
+           let value = [key, (times2*amount[key])]
            change["change"].push(value)
            changevalue = changevalue - times2*amount[key]
            reversed[i][1] -= times2*amount[key]
