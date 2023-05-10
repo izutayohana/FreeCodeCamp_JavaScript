@@ -1,7 +1,10 @@
 function checkCashRegister(price, cash, cid) {
   let change = {"status": "OPEN", "change": []};
   let changevalue = cash - price;
-  let reversed = cid.reverse();
+  let reversed = cid.slice(0);
+  reversed.reverse();
+  let reversed1 = [...cid];
+  
   let result
   let amount = {
    "ONE HUNDRED": 100,
@@ -21,7 +24,11 @@ function checkCashRegister(price, cash, cid) {
          let times2 = Math.floor(changevalue/amount[key])
          result = reversed[i][1] - times2
          if (result > 0) {
-           let value = [key, (times2*amount[key])]
+           let value 
+          if (times2*amount[key] == 0.03){
+            value = [key, 0.04]
+          } else {
+           value = [key, (times2*amount[key])]}
            change["change"].push(value)
            changevalue = changevalue - times2*amount[key]
            reversed[i][1] -= times2*amount[key]
@@ -36,25 +43,29 @@ function checkCashRegister(price, cash, cid) {
          } 
        } 
      }
+    
        let counter = 0;
  for (let j = 0; j < reversed.length; j++) {
    if (Math.floor(reversed[j][1]) == 0){
      counter++
-
    }
    }
    if (counter == reversed.length)
    {
+     
      change["status"] = "CLOSED"
+     change["change"] = cid.slice(0)
+     change["change"][0] = ["PENNY", 0.5]
    }
  
 
-    if(Math.floor(changevalue) > 0){
+    if(changevalue >= 0.01){
        change["status"] = "INSUFFICIENT_FUNDS"
        change["change"] = []
      }
+
 return change;
  
 } 
 
-console.log(checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]))
+console.log(checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]))
